@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DarthPhotos.Db\DarthPhotos.Db.csproj" />
+  </ItemGroup>
+
 </Project>
