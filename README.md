@@ -1,8 +1,18 @@
-[X] Todo
+Todo
+- 🟥 Task not started
+- ✅ Task completed
+- ❌ Task rejected
+
+
 Projects:
-1) :x: DpWeb
-   - netcore asp mvc
-2) :x: DpDb
-   - database
-3) :x: DpDaemon
-   - services
+✅ DarthPhotos.Core (Services/Managers/Core actions)
+✅ DarthPhotos.Db (Database entities/repositories)
+✅ DarthPhotos.Web (netcore MVC frontend)
+🟥 DpDaemon
+
+Roadmap
+✅ Users login
+🟥 save Users to DB
+🟥 Photo entity
+🟥 Upload a Photo
+...
