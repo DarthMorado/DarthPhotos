@@ -16,3 +16,14 @@ Roadmap
 🟥 Photo entity  
 🟥 Upload a Photo  
 ...  
+
+
+Panels:
+All Photos
+My Photos
+Albums
+Filter
+Map
+People/Faces
+Shared With Me
+Public
