@@ -12,7 +12,7 @@ namespace DarthPhotos.Db.Repositories
     {
         Task<T?> GetByIdAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
-        Task AddAsync(T entity);
+        Task CreateAsync(T entity);
         void Update(T entity);
         void Delete(T entity);
         Task SaveChangesAsync();
@@ -39,7 +39,7 @@ namespace DarthPhotos.Db.Repositories
             return await _dbSet.ToListAsync();
         }
 
-        public async Task AddAsync(T entity)
+        public async Task CreateAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
         }
