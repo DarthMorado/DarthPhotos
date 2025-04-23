@@ -13,9 +13,9 @@ Projects:
 Roadmap  
 ✅ Users login  
 ✅ save Users to DB  
-🟥 Users info page
+🟥 Users info page  
 🟥 Photo entity  
-🟥 Photos storage service
+🟥 Photos storage service  
 🟥 Upload a Photo  
 🟥 See all your photos
 
