@@ -1,6 +1,7 @@
 using DarthPhotos.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace DarthPhotos.Web.Controllers
 {
@@ -15,6 +16,9 @@ namespace DarthPhotos.Web.Controllers
 
         public IActionResult Index()
         {
+            var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+
             return View();
         }
 

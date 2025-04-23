@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DarthPhotos.Core
 {
-    public class MapperProfile : Profile
+    public class MappingProfile : Profile
     {
-        public MapperProfile()
+        public MappingProfile()
         {
             //        CreateMap<User, UserDto>()
             //.ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Email));
