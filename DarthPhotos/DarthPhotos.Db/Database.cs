@@ -14,6 +14,8 @@ namespace DarthPhotos.Db
         }
 
         public DbSet<UserEntity> Users { get; set; }
+        public DbSet<PhotoEntity> Photos { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +25,10 @@ namespace DarthPhotos.Db
             modelBuilder.Entity<UserEntity>()
                 .Property(e => e.Id)
                 .HasColumnName("USR_ID");
+
+            modelBuilder.Entity<PhotoEntity>()
+                .Property(e => e.Id)
+                .HasColumnName("PHT_ID");
         }
     }
 }
