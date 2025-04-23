@@ -1,3 +1,4 @@
+using DarthPhotos.Web;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
@@ -21,6 +22,7 @@ builder.Services.AddAuthentication(options =>
 });
 
 DarthPhotos.Core.ServicesConfigurator.Configure(builder.Services, builder.Configuration);
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 

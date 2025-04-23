@@ -5,16 +5,22 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using DarthPhotos.Core.Services;
 using System.Security.Claims;
+using System.Threading;
+using AutoMapper;
+using DarthPhotos.Web.Models;
 
 namespace DarthPhotos.Web.Controllers
 {
     public class AuthController : Controller
     {
         private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public AuthController(IUserService userService)
+        public AuthController(IUserService userService,
+            IMapper mapper)
         {
             _userService = userService;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> IndexAsync(CancellationToken cancellationToken)
@@ -47,10 +53,19 @@ namespace DarthPhotos.Web.Controllers
         }
 
         [HttpGet("user")]
-        public async Task<IActionResult> UserSettings()
+        public async Task<IActionResult> UserSettings(CancellationToken cancellationToken)
         {
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            if (!String.IsNullOrWhiteSpace(emailClaim))
+            {
+                var userInfo = await _userService.GetUserBasicInfoAsync(emailClaim, cancellationToken);
+                return View("User", _mapper.Map<UserModel>(userInfo));
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+                
         }
     }
 }

@@ -1,0 +1,10 @@
+﻿@model UserModel
+
+<fieldset>
+    <div class="form-group row">
+        <label asp-for="Gmail" class="col-form-label col-sm-4"></label>
+        <div class="col-sm-8">
+            @Html.ValueFor(m => m.Gmail)
+        </div>
+    </div>
+</fieldset>
