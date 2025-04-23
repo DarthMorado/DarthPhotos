@@ -16,7 +16,7 @@ namespace DarthPhotos.Web.Controllers
 
         public IActionResult Index()
         {
-            var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            
 
 
             return View();

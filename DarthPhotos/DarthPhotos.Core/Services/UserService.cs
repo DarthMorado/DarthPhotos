@@ -33,16 +33,18 @@ namespace DarthPhotos.Core.Services
             UserEntity user = await _userRepository.GetByEmailAsync(gmail, cancellationToken);
             if (user == null)
             {
-                var userEntity = new UserEntity()
+                user = new()
                 {
                     Gmail = gmail,
                     IsAdmin = false
                 };
 
-                await _userRepository.CreateAsync(userEntity);
+                await _userRepository.CreateAsync(user);
+                await _userRepository.SaveChangesAsync();
             }
 
-            return _mapper.Map<UserDto>(user);
+            var result = _mapper.Map<UserDto>(user);
+            return result;
         }
     }
 }

@@ -3,13 +3,28 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using DarthPhotos.Core.Services;
+using System.Security.Claims;
 
 namespace DarthPhotos.Web.Controllers
 {
     public class AuthController : Controller
     {
-        public IActionResult Index()
+        private readonly IUserService _userService;
+
+        public AuthController(IUserService userService)
         {
+            _userService = userService;
+        }
+
+        public async Task<IActionResult> IndexAsync(CancellationToken cancellationToken)
+        {
+            var emailClaim = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            if (!String.IsNullOrWhiteSpace(emailClaim))
+            {
+                var userInfo = await _userService.GetUserBasicInfoAsync(emailClaim, cancellationToken);
+            }
+
             return RedirectToAction("Index", "Home");
         }
 
