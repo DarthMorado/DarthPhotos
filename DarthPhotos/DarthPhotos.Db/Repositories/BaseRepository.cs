@@ -20,10 +20,10 @@ namespace DarthPhotos.Db.Repositories
         
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
-        private readonly DbContext _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly Database _context;
+        protected readonly DbSet<T> _dbSet;
 
-        public BaseRepository(DbContext context)
+        public BaseRepository(Database context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
@@ -52,6 +52,8 @@ namespace DarthPhotos.Db.Repositories
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
+
+            
         }
 
         public async Task SaveChangesAsync()
