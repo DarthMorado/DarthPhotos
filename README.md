@@ -12,8 +12,18 @@ Projects:
   
 Roadmap  
 ✅ Users login  
-🟥 save Users to DB  
-🟥 Photo entity  
+✅ save Users to DB  
+✅ Users info page  
+✅ Photo entity  
+  
+🟥 Upload a Photo  
+🟥 See all your photos
+
+
+v.0.1.0:
+🟥 Photos storage service
+🟥 DEV DB
+🟥 See all photos (no user distinction)
 🟥 Upload a Photo  
 ...  
 
@@ -27,3 +37,6 @@ Map
 People/Faces
 Shared With Me
 Public
+
+
+
