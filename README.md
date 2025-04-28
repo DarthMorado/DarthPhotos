@@ -15,7 +15,9 @@ Roadmap
 ✅ save Users to DB  
 ✅ Users info page  
 ✅ Photo entity  
-  
+
+🟥 DB for Scanned photos  
+🟥 Scan folder  
 🟥 Upload a Photo  
 🟥 See all your photos
 
