@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using DarthPhotos.Core.Services;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -15,7 +16,8 @@ namespace DarthPhotos.Daemon
         private readonly AppSettings _options;
 
         public MainDaemon(ILogger<MainDaemon> logger,
-            IOptions<AppSettings> options)
+            IOptions<AppSettings> options,
+            IPhotosService photosService)
         {
             _logger = logger;
             _options = options.Value;
@@ -25,7 +27,11 @@ namespace DarthPhotos.Daemon
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation($"Worker running at: {DateTimeOffset.Now}; {_options.ScannedPhotosPath}");
+                if (_options?.ScanDaemon?.Enabled ?? false)
+                {
+                    _logger.LogInformation($"Worker running at: {DateTimeOffset.Now}; {_options.ScanDaemon.ScannedPhotosPath}");
+                }
+                
                 await Task.Delay(1000, stoppingToken);
             }
         }

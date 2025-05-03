@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DarthPhotos.Daemon
+namespace DarthPhotos.Daemon.Options
 {
-    public class AppSettings
+    public class ScanDaemonSettings : DaemonOptions
     {
         public string ScannedPhotosPath { get; set; }
     }

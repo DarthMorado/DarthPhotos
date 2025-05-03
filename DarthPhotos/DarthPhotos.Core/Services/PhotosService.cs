@@ -8,11 +8,15 @@ namespace DarthPhotos.Core.Services
 {
     public interface IPhotosService
     {
-        
+        public Task ScanPhotos();
     }
 
 
     public class PhotosService : IPhotosService
     {
+        public async Task ScanPhotos()
+        {
+
+        }
     }
 }

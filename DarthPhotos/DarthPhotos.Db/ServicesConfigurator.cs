@@ -12,7 +12,7 @@ namespace DarthPhotos.Db
 {
     public static class ServicesConfigurator
     {
-        public static void Configure(IServiceCollection services, ConfigurationManager config)
+        public static void Configure(IServiceCollection services, IConfiguration config)
         {
             services.AddDbContext<Database>(options =>
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection")));

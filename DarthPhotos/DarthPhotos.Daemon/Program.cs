@@ -21,9 +21,10 @@ public class Program
         {
             services.AddHostedService<MainDaemon>();
             services.Configure<AppSettings>(context.Configuration.GetSection("AppSettings"));
+            Configure(services, context.Configuration);
         });
 
-        ConfigureServices();
+        
 
 #if DEBUG
         // Run as a console app in Debug mode
@@ -37,9 +38,9 @@ builder.UseWindowsService();
         host.Run();
     }
 
-    public static void ConfigureServices()
+    public static void Configure(IServiceCollection services, IConfiguration config)
     {
-
+        DarthPhotos.Core.ServicesConfigurator.Configure(services, config);
     }
 
 }
