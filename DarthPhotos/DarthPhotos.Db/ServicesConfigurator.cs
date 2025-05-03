@@ -17,6 +17,7 @@ namespace DarthPhotos.Db
             services.AddDbContext<Database>(options =>
                 options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IScanRepository, ScanRepository>();
         }
     }
 }

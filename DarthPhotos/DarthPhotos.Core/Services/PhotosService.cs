@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DarthPhotos.Db.Repositories;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Client;
 using System;
@@ -20,10 +21,13 @@ namespace DarthPhotos.Core.Services
     public class PhotosService : IPhotosService
     {
         private readonly ILogger _logger;
+        private readonly IScanRepository _scanRepository;
 
-        public PhotosService(ILogger<PhotosService> logger)
+        public PhotosService(ILogger<PhotosService> logger,
+            IScanRepository scanRepository)
         {
             _logger = logger;
+            _scanRepository = scanRepository;
         }
 
         public async Task<bool> ScanPhotos(string basePath, CancellationToken cancellationToken)
@@ -65,7 +69,12 @@ namespace DarthPhotos.Core.Services
                     var hash = sha256.ComputeHash(stream);
                     var hashString = BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
                     var fileInfo = new FileInfo(file);
-                    
+
+                    var dbItem = await _scanRepository.GetByHashAsync(hashString, cancellationToken);
+                    if (dbItem is not null)
+                    {
+                        continue;
+                    }
                 }
             }
 

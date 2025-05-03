@@ -17,5 +17,9 @@ namespace DarthPhotos.Db.Entities
         [Column("SCN_USR_Id")]
         public int? UserId { get; set; }
         public UserEntity User { get; set; }
+        [Column("SCN_Hash")]
+        public string Hash { get; set; }
+        [Column("SCN_Is_Processed")]
+        public bool IsProcessed { get; set; }
     }
 }
